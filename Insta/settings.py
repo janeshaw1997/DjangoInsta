@@ -29,7 +29,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+# if any new app has been added to the project, make sure update this list
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'instagram',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +55,7 @@ ROOT_URLCONF = 'Insta.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')], # dirs are relative directories, not absolute
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
