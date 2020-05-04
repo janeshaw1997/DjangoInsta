@@ -122,3 +122,8 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')] # where to find the static files
 
+LOGIN_REDIRECT_URL = 'posts' # tell the system to redirect posts url after successfully login
+
+LOGOUT_REDIRECT_URL = 'posts'
+
+AUTH_USER_MODEL = 'instagram.InstaUser' # instagram.model.InstaUser will cause error in django
