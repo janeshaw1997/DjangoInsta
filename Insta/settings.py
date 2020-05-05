@@ -130,3 +130,5 @@ LOGIN_REDIRECT_URL = 'posts' # tell the system to redirect posts url after succe
 LOGOUT_REDIRECT_URL = 'posts'
 
 AUTH_USER_MODEL = 'instagram.InstaUser' # instagram.model.InstaUser will cause error in django
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFileStorage'
