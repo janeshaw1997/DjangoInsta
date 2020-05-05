@@ -1,0 +1,34 @@
+<!-- to add header for each page -->
+
+<html>
+    {% load static %} <!-- must load static before using static-->
+    <!-- head includes meta data: encryption mode, settings, website title, included css library-->
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Stitch Insta</title>
+        <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'vendor/font-awesome-4.6.3/css/font-awesome.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    </head>
+
+    <body>
+        {% include 'header.html' %} <!-- include will replace this line with the content of header.html -->
+
+        <!-- content will be each html page that use base.html -->
+        <div class="content-wrapper">
+            <div class="container">
+                {% block content %} 
+                {% endblock content %}
+            <div>
+        </div>
+
+        <script type="text/javascript" src="{% static 'js/jquery-3.5.0.js' %}"></script>
+        <script type="text/javascript" src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/ajax-csrf-auth.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+
+        {% block entrascript %}
+        {% endblock entrascript %}
+    </body>
+</html>

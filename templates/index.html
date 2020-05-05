@@ -1,31 +1,44 @@
-{% load static %}
+{% extends "base.html" %} <!-- put base.html content here -->
 
-<ul>
-    {% if request.user.is_authenticated %}
-        <li>
-            Hi, {{request.user.username}}
-        </li>
-        <li>
-            <a href="{% url 'logout' %}">Logout</a>
-        </li>
-    {% else %}
-        <li>
-            <a href="{% url 'login' %}">Login</a>
-        </li>
-        <li>
-            <a href="{% url 'signup' %}">Signup</a>
-        </li>
-    {% endif %}
-</ul>
+{% load custom_tags %}
 
-<div>
-    <a href="{% url 'make_post' %}">Make Post</a>
-</div>
-
-<div>
+{% block content %}
+<div class="cards-listing">
     {% for post in object_list %}
-        <a href="{% url 'post_detail' post.id %}"> <!-- link master list to detail page -->
-            <img src="/{{post.image}}"> <!-- for each post, create an image -->
-        </a>
+        <div class="row">
+            <div class="card view-update {{ post.id }}">
+                <div class="card__panel-head">
+                    <div class="poster__info">
+                        <a href="{% url 'user_detail' post.author.id %}" class="poster__name">
+                            {% if post.auther.profile_pic %}
+                                <img class="poster__profilepic" src="/{{ post.author.profile_pic }}">
+                            {% endif %}
+                            {{ post.author.username }}
+                        </a>
+                        {% comment %} <span class="poster__timestamp">
+                            {{ post.posted_on|timesince }}
+                        </span> {% endcomment %}
+                    </div>
+                </div>
+                <a href="{% url 'post_detail' post.id %}">
+                    <img class="card__main-image" src="/{{ post.image }}">
+                </a>
+
+                <div class="card__panel-body">
+                    <div class="likes">
+                        {% if post.get_like_count %}
+                            {{ post.get_like_count }} like{% if post.get_like_count > 1 %}s{% endif %}
+                        {% endif %}
+                    </div>
+                    <section class="input-row"><!-- heart icon -->
+                         <i class="fa {% has_user_liked_post post user %} submit-like" aria-hidden="true"></i>
+                        <div class="hidden-data {{ post.pk }}" style="display: none;">
+                            <span class="post-pk">{{ post.pk }}</span>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
     {% endfor %}
 </div>
+{% endblock content %}

@@ -1,6 +1,11 @@
+{% extends "base.html" %} <!-- put base.html content here -->
+{% block content %}
+
 <h1>Edit Post</h1>
 <form action="" method="post" enctype="multipart/form-data">
     {% csrf_token %} <!-- django's built-in feature to protect CRSF attacks -->
     {{ form.as_p }} <!-- treat contents of form as paragraph -->
     <button type="submit">Update</button>
 </form>
+
+{% endblock content %}

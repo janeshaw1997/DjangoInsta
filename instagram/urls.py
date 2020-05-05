@@ -15,7 +15,7 @@ Including another URLconf (can be the URLconf of apps)
 """
 from django.contrib import admin
 from django.urls import include, path
-from instagram.views import HelloWorld, PostsView, PostsDetailView, PostCreateView, PostUpdateView, PostDeleteView
+from instagram.views import HelloWorld, PostsView, PostsDetailView, PostCreateView, PostUpdateView, PostDeleteView, addLike, UsersDetailView
 
 urlpatterns = [
     path('', HelloWorld.as_view(), name='helloworld'),
@@ -24,4 +24,6 @@ urlpatterns = [
     path('post/new/', PostCreateView.as_view(), name='make_post'),
     path('post/update/<int:pk>/', PostUpdateView.as_view(), name='post_update'),
     path('post/delete/<int:pk>/', PostDeleteView.as_view(), name='post_delete'),
+    path('like', addLike, name="addLike"),
+    path('user/<int:pk>', UsersDetailView.as_view(), name='user_detail'),
 ]

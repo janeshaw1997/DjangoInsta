@@ -1,6 +1,0 @@
-<h1>Sign Up</h1>
-<form action="" method="post">
-    {% csrf_token %} <!-- django's built-in feature to protect CRSF attacks -->
-    {{ form.as_p }} <!-- treat contents of form as paragraph -->
-    <button type="submit">Sign Up</button>
-</form>
