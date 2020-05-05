@@ -22,5 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('instagram/', include('instagram.urls')),
     path('auth/', include('django.contrib.auth.urls')),
-    path('auth/signup/', Signup.as_view(), name='signup'),
+    path('', include('instagram.urls'))
 ]

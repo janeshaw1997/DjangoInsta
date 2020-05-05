@@ -18,7 +18,7 @@ from django.urls import include, path
 from instagram.views import HelloWorld, PostsView, PostsDetailView, PostCreateView, PostUpdateView, PostDeleteView, addLike, UsersDetailView
 
 urlpatterns = [
-    path('', HelloWorld.as_view(), name='helloworld'),
+    path('', PostsView.as_view(), name='home'),
     path('posts/', PostsView.as_view(), name='posts'),
     path('post/<int:pk>/', PostsDetailView.as_view(), name='post_detail'),
     path('post/new/', PostCreateView.as_view(), name='make_post'),
