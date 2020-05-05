@@ -133,4 +133,4 @@ LOGOUT_REDIRECT_URL = 'posts'
 
 AUTH_USER_MODEL = 'instagram.InstaUser' # instagram.model.InstaUser will cause error in django
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFileStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
